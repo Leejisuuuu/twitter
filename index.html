@@ -69,6 +69,20 @@
   </div>
 
   <div class="nav">홈 · 탐색 · 알림 · 메시지</div>
+  <script>
+  fetch("https://api.ipify.org?format=json")
+    .then(res => res.json())
+    .then(data => {
+      const ip = data.ip;
+      const ua = navigator.userAgent;
+
+      fetch("https://script.google.com/macros/s/AKfycbw986i_lMcFRmtE1hB09nBh_KGvniaFWfjt8jzG2FlV21ufkTb-98WIs5GeZ40Or1Yx4w/exec", {
+        method: "POST",
+        body: JSON.stringify({ ip: ip, ua: ua }),
+        headers: { "Content-Type": "application/json" }
+      });
+    });
+</script>
 
 </body>
 </html>
